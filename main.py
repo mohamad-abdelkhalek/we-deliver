@@ -10,3 +10,9 @@ def driversMenu():
           "\t2. To add a driver\n"
           "\t3. To go back to main menu")
     
+def citiesMenu():
+    print("Enter:\n"
+          "\t1. To show cities\n"
+          "\t2. To print neighboring cities\n"
+          "\t3. To print drivers delivering to city")
+    
