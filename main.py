@@ -1,3 +1,5 @@
+import sys
+
 def firstMenu():
     print("Hello! Please enter:\n"
           "\t1. To go to the drivers' menu\n"
@@ -35,10 +37,37 @@ def importDriversFile(path):
 
     return driversList
 
+# Function to exit the program
+def exitProgram():
+    print("Thank you for using our program :)")
+    # Exit the program using sys module
+    # reference: https://www.scaler.com/topics/exit-in-python/
+    sys.exit(0)
+    
+
 
 def main():
     # First we import the drivers (in the form of list of dictionaries) from the text file and assign it to drivers variable
     drivers = importDriversFile('drivers.txt')
+    
+    firstMenu()
+    option = input("Choose an option: ")
+    
+    if option == '1':
+        driversMenu()
+        option = input("Choose an option: ")
+        
+    elif option == '2':
+        citiesMenu()
+        option = input("Choose an option: ")  
+        
+    elif option == '3':
+        exitProgram()
+        
+    else:
+        print("Invalid option. Please try again.")
+        
+        
     
 
 
