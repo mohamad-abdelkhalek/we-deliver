@@ -1,1 +1,9 @@
-
+ID001, Max Verstappen, Akkar
+ID002, Charles Leclerc, Saida
+ID003, Lando Norris, Jbeil
+ID004, Carlos Sainz, Beirut
+ID005, Oscar Piastri, Zahle
+ID006, Sergio Perez, Akkar
+ID007, George Russell, Saida
+ID008, Lewis Hamilton, Beirut
+ID009, Fernando Alonso, Jbeil
