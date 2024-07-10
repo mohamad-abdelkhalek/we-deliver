@@ -37,6 +37,12 @@ def importDriversFile(path):
 
     return driversList
 
+def viewAllDrivers(driversList):   
+    for driver in driversList:
+        print(driver['driverID'] + ", " + driver['driverName'] + ", " + driver['city'])
+    
+    
+
 # Function to exit the program
 def exitProgram():
     print("Thank you for using our program :)")
@@ -49,6 +55,7 @@ def exitProgram():
 def main():
     # First we import the drivers (in the form of list of dictionaries) from the text file and assign it to drivers variable
     drivers = importDriversFile('drivers.txt')
+    #print(drivers)
     
     firstMenu()
     option = input("Choose an option: ")
@@ -56,6 +63,8 @@ def main():
     if option == '1':
         driversMenu()
         option = input("Choose an option: ")
+        
+        viewAllDrivers(drivers)
         
     elif option == '2':
         citiesMenu()
