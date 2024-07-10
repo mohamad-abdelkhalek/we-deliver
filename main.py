@@ -34,3 +34,14 @@ def importDriversFile(path):
             driversList.append(driver)
 
     return driversList
+
+
+def main():
+    # First we import the drivers (in the form of list of dictionaries) from the text file and assign it to drivers variable
+    drivers = importDriversFile('drivers.txt')
+    
+
+
+# To ensure the run of the proram main function as a script (A good habit)       
+if __name__ == "__main__":
+    main()
