@@ -16,3 +16,6 @@ class Graph:
     def displayCities(self):
         for city in self.graph:
             print(city, ":", self.graph[city])
+            
+    def cityExists(self, city):
+        return city in self.graph

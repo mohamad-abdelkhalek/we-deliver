@@ -55,7 +55,6 @@ def setupGraph(g):
     g.addPath("Jbeil", "Akkar")
     
     g.addPath("Saida", "Zahle")
-    
 
 # Function to exit the program
 def exitProgram():
