@@ -12,3 +12,7 @@ class Graph:
             self.graph[city2].append(city1)
         else:
             print("One or both cities", city1, city2, "are not in the graph.")
+            
+    def displayCities(self):
+        for city in self.graph:
+            print(city, ":", self.graph[city])
