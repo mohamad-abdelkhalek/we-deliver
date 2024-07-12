@@ -1,4 +1,5 @@
 import sys
+from cities import Graph
 
 def firstMenu():
     print("Hello! Please enter:\n"
@@ -40,7 +41,20 @@ def importDriversFile(path):
 def viewAllDrivers(driversList):   
     for driver in driversList:
         print(driver['driverID'] + ", " + driver['driverName'] + ", " + driver['city'])
+
+def setupGraph(g):
+    g.AddCity("Beirut")
+    g.AddCity("Jbeil")
+    g.AddCity("Akkar")
     
+    g.AddCity("Saida")
+    g.AddCity("Zahle")
+    
+    g.addPath("Beirut", "Jbeil")
+    g.addPath("Beirut", "Akkar")
+    g.addPath("Jbeil", "Akkar")
+    
+    g.addPath("Saida", "Zahle")
     
 
 # Function to exit the program
@@ -55,6 +69,8 @@ def exitProgram():
 def main():
     # First we import the drivers (in the form of list of dictionaries) from the text file and assign it to drivers variable
     drivers = importDriversFile('drivers.txt')
+    cities = Graph()
+    setupGraph(cities)
     #print(drivers)
     
     firstMenu()
