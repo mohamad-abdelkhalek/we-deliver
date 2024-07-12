@@ -65,7 +65,6 @@ def exitProgram():
     sys.exit(0)
     
 
-
 def main():
     # First we import the drivers (in the form of list of dictionaries) from the text file and assign it to drivers variable
     drivers = importDriversFile('drivers.txt')
@@ -79,8 +78,8 @@ def main():
     if option == '1':
         driversMenu()
         option = input("Choose an option: ")
-        
-        viewAllDrivers(drivers)
+        if option == '1':
+            viewAllDrivers(drivers)
         
     elif option == '2':
         citiesMenu()
