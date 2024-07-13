@@ -56,6 +56,15 @@ def setupGraph(g):
     
     g.addPath("Saida", "Zahle")
 
+def saveDriversFile(driversList, path):
+    try:
+        with open(path, 'w') as file:
+            for driver in driversList:
+                file.write(driver['driverID'] + ", " + driver['driverName'] + ", " + driver['city'] + "\n")
+        print("Driver saved to " + path + " successfully.")
+    except Exception as e:
+        print("Error saving drivers to file '" + path + "': " + str(e))
+
 # Function to exit the program
 def exitProgram():
     print("Thank you for using our program :)")
