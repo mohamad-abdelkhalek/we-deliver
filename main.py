@@ -65,6 +65,33 @@ def saveDriversFile(driversList, path):
     except Exception as e:
         print("Error saving drivers to file '" + path + "': " + str(e))
 
+def addDriver(driversList, g):
+    name = input("Enter the name of the driver: ").strip()
+    startCity = input("Enter the start city of the driver: ").strip()
+
+    # Check if the city exists in the graph
+    if g.cityExists(startCity) == False:
+        choice = input("The city [" + startCity + "] is not available in the current cities database. Do you want to add it to the database? (yes/no): ").strip().lower()
+        if choice == 'yes':
+            g.AddCity(startCity)
+            print("City [" + startCity + "] added to the cities database.")
+
+    # Generate next driver ID
+    nextID = len(driversList) + 1
+    driverID = "ID" + str(nextID).zfill(3)
+
+    # Add driver to the list
+    driversList.append({
+        'driverID': driverID,
+        'driverName': name,
+        'city': startCity
+    })
+
+    # Save updated list to drivers.txt
+    saveDriversFile(driversList, 'drivers.txt')
+
+    print("Driver [" + name + "] added with ID " + driverID + " starting from [" + startCity + "].")
+    
 # Function to exit the program
 def exitProgram():
     print("Thank you for using our program :)")
