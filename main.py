@@ -105,29 +105,34 @@ def main():
     drivers = importDriversFile('drivers.txt')
     cities = Graph()
     setupGraph(cities)
-    #print(drivers)
     
-    firstMenu()
-    option = input("Choose an option: ")
-    
-    if option == '1':
-        driversMenu()
+    while True:
+        firstMenu()
         option = input("Choose an option: ")
+        
         if option == '1':
-            viewAllDrivers(drivers)
+            driversMenu()
+            option = input("Choose an option: ")
+            if option == '1':
+                viewAllDrivers(drivers)
+            elif option == '2':
+                addDriver(drivers, cities)
+            elif option == '3':
+                continue # Go back to the main menu
+            else:
+                print("Invalid option. Please try again.")
         
         elif option == '2':
-            addDriver(drivers, cities)
+            citiesMenu()
+            option = input("Choose an option: ")
+            
+        elif option == '3':
+            exitProgram()
+            break
         
-    elif option == '2':
-        citiesMenu()
-        option = input("Choose an option: ")  
-        
-    elif option == '3':
-        exitProgram()
-        
-    else:
-        print("Invalid option. Please try again.")
+        else:
+            print("Invalid option. Please try again.")
+
         
         
     
