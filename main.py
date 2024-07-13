@@ -2,7 +2,7 @@ import sys
 from cities import Graph
 
 def firstMenu():
-    print("Hello! Please enter:\n"
+    print("Please enter:\n"
           "\t1. To go to the drivers' menu\n"
           "\t2. To go to the cities' menu\n"
           "\t3. To exit the system")
@@ -125,6 +125,8 @@ def main():
         elif option == '2':
             citiesMenu()
             option = input("Choose an option: ")
+            if option == '1':
+                cities.showAllCities()
             
         elif option == '3':
             exitProgram()

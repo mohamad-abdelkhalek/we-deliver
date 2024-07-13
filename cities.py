@@ -22,3 +22,7 @@ class Graph:
             return True
         else:
             return False
+        
+    def showAllCities(self):
+        for city in self.graph:
+            print("- " + city)
