@@ -80,6 +80,9 @@ def main():
         if option == '1':
             viewAllDrivers(drivers)
         
+        elif option == '2':
+            addDriver(drivers, cities)
+        
     elif option == '2':
         citiesMenu()
         option = input("Choose an option: ")  

@@ -18,4 +18,7 @@ class Graph:
             print(city, ":", self.graph[city])
             
     def cityExists(self, city):
-        return city in self.graph
+        if city in self.graph:
+            return True
+        else:
+            return False
