@@ -43,12 +43,12 @@ def viewAllDrivers(driversList):
         print(driver['driverID'] + ", " + driver['driverName'] + ", " + driver['city'])
 
 def setupGraph(g):
-    g.AddCity("Beirut")
-    g.AddCity("Jbeil")
-    g.AddCity("Akkar")
+    g.addCity("Beirut")
+    g.addCity("Jbeil")
+    g.addCity("Akkar")
     
-    g.AddCity("Saida")
-    g.AddCity("Zahle")
+    g.addCity("Saida")
+    g.addCity("Zahle")
     
     g.addPath("Beirut", "Jbeil")
     g.addPath("Beirut", "Akkar")
@@ -73,7 +73,7 @@ def addDriver(driversList, g):
     if g.cityExists(startCity) == False:
         choice = input("The city [" + startCity + "] is not available in the current cities database. Do you want to add it to the database? (yes/no): ").strip().lower()
         if choice == 'yes':
-            g.AddCity(startCity)
+            g.addCity(startCity)
             print("City [" + startCity + "] added to the cities database.")
 
     # Generate next driver ID
