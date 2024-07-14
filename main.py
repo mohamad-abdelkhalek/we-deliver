@@ -127,7 +127,9 @@ def main():
             option = input("Choose an option: ")
             if option == '1':
                 cities.showAllCities()
-            
+            elif option == '2':
+                city = input("Enter a city name to print all neighbors: ")
+                cities.neighboringCities(city)
         elif option == '3':
             exitProgram()
             break

@@ -26,3 +26,9 @@ class Graph:
     def showAllCities(self):
         for city in self.graph:
             print("- " + city)
+            
+    def neighboringCities(self, city):
+        if city in self.graph:
+            print("The cities that can be reached from " + city + " : " + ", ".join(self.graph[city]))
+        else:
+            print(city, "is not in the graph.")
