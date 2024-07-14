@@ -3,28 +3,29 @@ class Graph:
         self.graph = {}
 
     def addCity(self, city):
-        if city not in self.graph:
-            self.graph[city] = []
+        if city.lower() not in self.graph:
+            self.graph[city.lower()] = []
             
     def addPath(self, city1, city2):
-        if city1 in self.graph and city2 in self.graph:
-            self.graph[city1].append(city2)
-            self.graph[city2].append(city1)
+        if city1.lower() in self.graph and city2.lower() in self.graph:
+            self.graph[city1.lower()].append(city2.lower())
+            self.graph[city2.lower()].append(city1.lower())
         else:
             print("One or both cities", city1, city2, "are not in the graph.") 
             
     def cityExists(self, city):
-        if city in self.graph:
+        if city.lower() in self.graph:
             return True
         else:
             return False
         
     def showAllCities(self):
         for city in self.graph:
-            print("- " + city)
+            print("- " + city.capitalize())
             
     def neighboringCities(self, city):
-        if city in self.graph:
-            print("The cities that can be reached from " + city + " : " + ", ".join(self.graph[city]))
+        if city.lower() in self.graph:
+            neighbors = self.graph[city.lower()]
+            print("The cities that can be reached from " + city.capitalize() + " : " + ", ".join(neighbor.capitalize() for neighbor in neighbors))
         else:
-            print(city, "is not in the graph.")
+            print(city.capitalize(), "is not in the graph.")
