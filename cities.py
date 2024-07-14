@@ -11,11 +11,7 @@ class Graph:
             self.graph[city1].append(city2)
             self.graph[city2].append(city1)
         else:
-            print("One or both cities", city1, city2, "are not in the graph.")
-            
-    def displayCities(self):
-        for city in self.graph:
-            print(city, ":", self.graph[city])
+            print("One or both cities", city1, city2, "are not in the graph.") 
             
     def cityExists(self, city):
         if city in self.graph:
