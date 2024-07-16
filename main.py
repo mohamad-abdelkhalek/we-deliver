@@ -92,6 +92,10 @@ def addDriver(driversList, g):
 
     print("Driver [" + name + "] added with ID " + driverID + " starting from [" + startCity + "].")
 
+def printNeighboringCities(g):
+    city = input("Enter a city name to print all neighbors: ")
+    g.neighboringCities(city)
+
 def driversDeliveringToCity(driversList, g):
     city = input("Enter the city name: ").strip().lower()
     if g.cityExists(city) == False:
@@ -155,10 +159,12 @@ def main():
             if option == '1':
                 cities.showAllCities()
             elif option == '2':
-                city = input("Enter a city name to print all neighbors: ")
-                cities.neighboringCities(city)
+                printNeighboringCities(cities)
             elif option == '3':
                 driversDeliveringToCity(drivers, cities)
+            else:
+                print("Invalid option. Please try again.")
+                
         elif option == '3':
             exitProgram()
             break
