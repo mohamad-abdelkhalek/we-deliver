@@ -17,7 +17,8 @@ def citiesMenu():
     print("Enter:\n"
           "\t1. To show cities\n"
           "\t2. To print neighboring cities\n"
-          "\t3. To print drivers delivering to city")
+          "\t3. To print drivers delivering to city\n"
+          "\t4. To go back to main menu")
     
 # Function to import drivers from the text file into the list as a form of list of dictionaries
 # Inspired from https://www.youtube.com/watch?v=hUyopAoOpG4
@@ -132,7 +133,6 @@ def exitProgram():
     
 
 def main():
-    # First we import the drivers (in the form of list of dictionaries) from the text file and assign it to drivers variable
     drivers = importDriversFile('drivers.txt')
     cities = Graph()
     setupGraph(cities)
@@ -142,28 +142,32 @@ def main():
         option = input("Choose an option: ")
         
         if option == '1':
-            driversMenu()
-            option = input("Choose an option: ")
-            if option == '1':
-                viewAllDrivers(drivers)
-            elif option == '2':
-                addDriver(drivers, cities)
-            elif option == '3':
-                continue # Go back to the main menu
-            else:
-                print("Invalid option. Please try again.")
+            while True:
+                driversMenu()
+                option = input("Choose an option: ")
+                if option == '1':
+                    viewAllDrivers(drivers)
+                elif option == '2':
+                    addDriver(drivers, cities)
+                elif option == '3':
+                    break  # Go back to the main menu
+                else:
+                    print("Invalid option. Please try again.")
         
         elif option == '2':
-            citiesMenu()
-            option = input("Choose an option: ")
-            if option == '1':
-                cities.showAllCities()
-            elif option == '2':
-                printNeighboringCities(cities)
-            elif option == '3':
-                driversDeliveringToCity(drivers, cities)
-            else:
-                print("Invalid option. Please try again.")
+            while True:
+                citiesMenu()
+                option = input("Choose an option: ")
+                if option == '1':
+                    cities.showAllCities()
+                elif option == '2':
+                    printNeighboringCities(cities)
+                elif option == '3':
+                    driversDeliveringToCity(drivers, cities)
+                elif option == '4':
+                    break  # Go back to the main menu
+                else:
+                    print("Invalid option. Please try again.")
                 
         elif option == '3':
             exitProgram()
@@ -171,10 +175,6 @@ def main():
         
         else:
             print("Invalid option. Please try again.")
-
-        
-        
-    
 
 
 # To ensure the run of the proram main function as a script (A good habit)       
