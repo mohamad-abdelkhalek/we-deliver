@@ -29,3 +29,18 @@ class Graph:
             print("The cities that can be reached from " + city.capitalize() + " : " + ", ".join(neighbor.capitalize() for neighbor in neighbors))
         else:
             print(city.capitalize(), "is not in the graph.")
+            
+    def canReachCities(self, startCity):
+        visited = set()
+        queue = [startCity.lower()]
+        
+        while queue:
+            city = queue.pop(0)
+            
+            if city not in visited:
+                visited.add(city)
+                for neighbor in self.graph.get(city, []):
+                    if neighbor not in visited:
+                        queue.append(neighbor)
+                        
+        return visited
