@@ -1,19 +1,19 @@
 import sys
 from cities import Graph
 
-def firstMenu():
+def firstMenu(): # O(1)
     print("Please enter:\n"
           "\t1. To go to the drivers' menu\n"
           "\t2. To go to the cities' menu\n"
           "\t3. To exit the system")
     
-def driversMenu():
+def driversMenu(): # O(1)
     print("Enter:\n"
           "\t1. To view all the drivers\n"
           "\t2. To add a driver\n"
           "\t3. To go back to main menu")
     
-def citiesMenu():
+def citiesMenu(): # O(1)
     print("Enter:\n"
           "\t1. To show cities\n"
           "\t2. To print neighboring cities\n"
@@ -22,7 +22,7 @@ def citiesMenu():
     
 # Function to import drivers from the text file into the list as a form of list of dictionaries
 # Inspired from https://www.youtube.com/watch?v=hUyopAoOpG4
-def importDriversFile(path):
+def importDriversFile(path): # O(n)
     driversList = []
     
     with open(path, 'r') as file:
@@ -39,11 +39,11 @@ def importDriversFile(path):
 
     return driversList
 
-def viewAllDrivers(driversList):   
+def viewAllDrivers(driversList): # O(n)
     for driver in driversList:
         print(driver['driverID'] + ", " + driver['driverName'] + ", " + driver['city'])
 
-def setupGraph(g):
+def setupGraph(g): # O(1)
     g.addCity("Beirut")
     g.addCity("Jbeil")
     g.addCity("Akkar")
@@ -57,7 +57,7 @@ def setupGraph(g):
     
     g.addPath("Saida", "Zahle")
 
-def saveDriversFile(driversList, path):
+def saveDriversFile(driversList, path): # O(n)
     try:
         with open(path, 'w') as file:
             for driver in driversList:
@@ -66,7 +66,7 @@ def saveDriversFile(driversList, path):
     except Exception as e:
         print("Error saving drivers to file '" + path + "': " + str(e))
 
-def addDriver(driversList, g):
+def addDriver(driversList, g): # O(n)
     name = input("Enter the name of the driver: ").strip()
     startCity = input("Enter the start city of the driver: ").strip()
 
@@ -93,11 +93,11 @@ def addDriver(driversList, g):
 
     print("Driver [" + name + "] added with ID " + driverID + " starting from [" + startCity + "].")
 
-def printNeighboringCities(g):
+def printNeighboringCities(g): # O(V)
     city = input("Enter a city name to print all neighbors: ")
     g.neighboringCities(city)
 
-def driversDeliveringToCity(driversList, g):
+def driversDeliveringToCity(driversList, g): # O(V + E)
     city = input("Enter the city name: ").strip().lower()
     if g.cityExists(city) == False:
         print(city + " is not in the graph!")
@@ -125,7 +125,7 @@ def driversDeliveringToCity(driversList, g):
             print(driver['driverID'] + ", " + driver['driverName'] + ", " + driver['city'].capitalize())
 
 # Function to exit the program
-def exitProgram():
+def exitProgram(): # O(1)
     print("Thank you for using our program :)")
     # Exit the program using sys module
     # reference: https://www.scaler.com/topics/exit-in-python/
