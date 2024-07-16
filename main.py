@@ -91,7 +91,34 @@ def addDriver(driversList, g):
     saveDriversFile(driversList, 'drivers.txt')
 
     print("Driver [" + name + "] added with ID " + driverID + " starting from [" + startCity + "].")
+
+def driversDeliveringToCity(driversList, g):
+    city = input("Enter the city name: ").strip().lower()
+    if g.cityExists(city) == False:
+        print(city + " is not in the graph!")
+        return
+
+    canReach = g.canReachCities(city)
     
+    cities = []
+    for c in canReach:
+        capCity = c.capitalize()
+        cities.append(capCity)
+
+    print("Reachable cities from " + city.capitalize() + " : " + ', '.join(cities))
+    driversDelivering = []
+
+    for driver in driversList:
+        if driver['city'].lower() in canReach:
+            driversDelivering.append(driver)
+
+    if not driversDelivering:
+        print("No drivers are delivering to " + city.capitalize())
+    else:
+        print("Drivers delivering to " + city.capitalize() + ": ")
+        for driver in driversDelivering:
+            print(driver['driverID'] + ", " + driver['driverName'] + ", " + driver['city'].capitalize())
+
 # Function to exit the program
 def exitProgram():
     print("Thank you for using our program :)")
@@ -130,6 +157,8 @@ def main():
             elif option == '2':
                 city = input("Enter a city name to print all neighbors: ")
                 cities.neighboringCities(city)
+            elif option == '3':
+                driversDeliveringToCity(drivers, cities)
         elif option == '3':
             exitProgram()
             break
