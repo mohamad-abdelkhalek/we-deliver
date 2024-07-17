@@ -1,4 +1,6 @@
 class Graph:
+    
+    # initializer (Default instructor)
     def __init__(self):
         self.graph = {}
 
