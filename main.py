@@ -89,7 +89,7 @@ def addDriver(driversList, g): # O(n)
 
     # Generate next driver ID
     nextID = len(driversList) + 1
-    driverID = "ID" + str(nextID).zfill(3) # ID auto increament
+    driverID = "ID" + str(nextID).zfill(3) # Convert nextID to a string and fill with zeros to ensure it is 3 digits long
 
     # Add driver to the list
     driversList.append({
