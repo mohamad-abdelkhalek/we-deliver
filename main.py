@@ -1,18 +1,24 @@
+# Import sys module to use it to exit the program
 import sys
+
+# Import the cities graph
 from cities import Graph
 
+# Function to display the first menu
 def firstMenu(): # O(1)
     print("Please enter:\n"
           "\t1. To go to the drivers' menu\n"
           "\t2. To go to the cities' menu\n"
           "\t3. To exit the system")
     
+# Function to display the drivers menu   
 def driversMenu(): # O(1)
     print("Enter:\n"
           "\t1. To view all the drivers\n"
           "\t2. To add a driver\n"
           "\t3. To go back to main menu")
-    
+
+# Function to display the cities menu  
 def citiesMenu(): # O(1)
     print("Enter:\n"
           "\t1. To show cities\n"
@@ -39,10 +45,12 @@ def importDriversFile(path): # O(n)
 
     return driversList
 
+# Function to view all the drivers
 def viewAllDrivers(driversList): # O(n)
     for driver in driversList:
         print(driver['driverID'] + ", " + driver['driverName'] + ", " + driver['city'])
 
+# Function to add the cities and the paths between them
 def setupGraph(g): # O(1)
     g.addCity("Beirut")
     g.addCity("Jbeil")
@@ -57,6 +65,7 @@ def setupGraph(g): # O(1)
     
     g.addPath("Saida", "Zahle")
 
+# reference: https://www.pythontutorial.net/python-basics/python-write-text-file/
 def saveDriversFile(driversList, path): # O(n)
     try:
         with open(path, 'w') as file:
@@ -66,6 +75,7 @@ def saveDriversFile(driversList, path): # O(n)
     except Exception as e:
         print("Error saving drivers to file '" + path + "': " + str(e))
 
+# Function to add a driver
 def addDriver(driversList, g): # O(n)
     name = input("Enter the name of the driver: ").strip()
     startCity = input("Enter the start city of the driver: ").strip()
@@ -79,7 +89,7 @@ def addDriver(driversList, g): # O(n)
 
     # Generate next driver ID
     nextID = len(driversList) + 1
-    driverID = "ID" + str(nextID).zfill(3)
+    driverID = "ID" + str(nextID).zfill(3) # ID auto increament
 
     # Add driver to the list
     driversList.append({
@@ -93,10 +103,12 @@ def addDriver(driversList, g): # O(n)
 
     print("Driver [" + name + "] added with ID " + driverID + " starting from [" + startCity + "].")
 
+# Function to print neighboring cities
 def printNeighboringCities(g): # O(V)
     city = input("Enter a city name to print all neighbors: ")
     g.neighboringCities(city)
 
+# Function to print drivers delivering to city
 def driversDeliveringToCity(driversList, g): # O(V + E)
     city = input("Enter the city name: ").strip().lower()
     if g.cityExists(city) == False:
